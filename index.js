@@ -38,7 +38,7 @@ const addManager = () => {
     ]).then(answers => {
         const manager = new Manager(answers.managerName, answers.managerEmail, answers.managerID, answers.managerOfficeNumber);
         workforce.push(manager);
-        
+        addTeamMember();
     }) 
 }
         // engineer or intern prompts or finish application.
