@@ -35,9 +35,10 @@ const addManager = () => {
             message: "What is the manager's office number?",
             name: 'managerOfficeNumber'
         },
-    ]).then(answers => {
-        const manager = new Manager(answers.managerName, answers.managerEmail, answers.managerID, answers.managerOfficeNumber);
-        workforce.push(manager);
+    // destructure responses
+    ]).then(({managerName, managerEmail, managerID, managerOfficeNumber} = response) => {
+        // push specific to create manager class
+        workforce.push(new Manager(managerName, managerEmail, managerID, managerOfficeNumber));
         addTeamMember();
     }) 
 }
