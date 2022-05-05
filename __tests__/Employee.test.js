@@ -1,4 +1,5 @@
 const Employee = require("../lib/Employee");
+
 let nameExample = "Kenneth Lay";
 let idExample = "0001";
 let emailExample = "klay@enron.com";
