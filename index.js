@@ -138,9 +138,10 @@ function createHTML() {
         <section class=""main_container"></section> 
     </body>
     </html>
-    `
-    );
+    `,
+        (err) => err ? console.error(err) : console.log('A whoopsy has occurred'));
 }
+
     // then in class creation
 
 // generate html file
