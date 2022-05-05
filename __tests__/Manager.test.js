@@ -7,7 +7,7 @@ let officeNumberExample = "666";
 const managerExample = new Manager(nameExample, idExample, emailExample, officeNumberExample);
 
 describe("Manager", () => {
-    it("should create an object with values name, id, email, and office number", () => {
+    it("should be an object with values name, id, email, and office number", () => {
         expect(managerExample.name).toEqual("Elizabeth Holmes");
         expect(managerExample.id).toEqual("0001");
         expect(managerExample.email).toEqual("eholmes@theranos.com");
@@ -16,8 +16,7 @@ describe("Manager", () => {
 });
 
 describe("getRole", () => {
-    it("should return the 'Manager'", () => {
+    it("should return the role 'Manager'", () => {
         expect(managerExample.getRole()).toEqual("Manager");
     });
 });
-

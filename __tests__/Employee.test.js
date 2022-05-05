@@ -27,7 +27,7 @@ describe("getId", () => {
 });
 
 describe("getRole", () => {
-    it("should return the role of the employee", () => {
+    it("should return the role 'Employee'", () => {
         expect(employeeExample.getRole()).toEqual('Employee');
     });
 });

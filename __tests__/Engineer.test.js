@@ -22,7 +22,7 @@ describe("getGithub", () => {
 });
 
 describe("getRole", () => {
-    it('should return role of the engineer', () => {
+    it("should return the role 'Engineer'", () => {
         expect(engineerExample.getRole()).toEqual('Engineer');
     });
 });
