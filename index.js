@@ -162,7 +162,23 @@ function createCards() {
         else if (workforce[i].getRole() == 'Engineer') {
             employeeInfo = `Github: <a href="https://github.com/${workforce[i].engineerGithub}" target="_blank">${workforce[i].engineerGithub}</a>`;
         }
+
+        employeeCards += `<div class="card text-white bg-primary .col-6">
+    <div class="card-body">
+        <h5 class="card-title name-section">${workforce[i].employeeName}</h5>
+        <p class"card-text">
+        <span><img class='icon'></span>
+        <span class="role-section">${workforce[i].getRole()}</span>
+        </p>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item">ID: ${workforce[i].getId()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${workforce[i].getEmail()}">${workforce[i].getEmail()}</a></li>
+            <li class="list-group-item">${employeeInfo}</li>
+        </ul>    
+    </div>`
     }
+    return employeeCards;
 }
     // then in class creation
 
