@@ -74,14 +74,15 @@ const addTeamMember = () => {
         },
         {
             type: 'input',
-            message: "What is the team member's ID number?",
-            name: 'employeeId'
-        },
-        {
-            type: 'input',
             message: "What is the team member's email address?",
             name: 'employeeEmail'
         },
+        {
+            type: 'input',
+            message: "What is the team member's ID number?",
+            name: 'employeeId'
+        },
+
         {
             type: 'input',
             message: "What is this engineer's GitHub username?",
@@ -105,17 +106,18 @@ const addTeamMember = () => {
         .then(({ employeeRole, employeeName, employeeId, employeeEmail, engineerGitHub, internSchool, addEmployee } = addMember) => {
             // if chosen, create engineer class constructor
             if (employeeRole == "Engineer") {
-                workforce.push(new Engineer(employeeId, employeeName, employeeEmail, engineerGitHub));
+                workforce.push(new Engineer(employeeName, employeeId, employeeEmail, engineerGitHub));
             }
             // if chosen, create intern class constructor
             else if (employeeRole == "Intern") {
-                workforce.push(new Intern(employeeId, employeeName, employeeEmail, internSchool));
+                workforce.push(new Intern(employeeName, employeeId, employeeEmail, internSchool));
             }
             // if user chose to make another team member, restart team member prompts
             if (addEmployee === true) {
                 addTeamMember();
             }
             else {
+                console.log(workforce);
                 let readyTeam = createCards();
                 createHTML(readyTeam);
             }
@@ -142,7 +144,6 @@ function createHTML(cards) {
     </html>
     `,
         (err) => err ? console.error(err) : console.log('HTML has been created.'));
-    console.log(workforce);
 }
 
 addManager();
@@ -154,26 +155,26 @@ function createCards() {
 
     for (i = 0; i < workforce.length; i++) {
         if (workforce[i].getRole() == 'Manager') {
-            employeeInfo = `Office number: ${workforce[i].managerOfficeNumber}`;
+            employeeInfo = `Office number: ${workforce[i].officeNumber}`;
         }
         else if (workforce[i].getRole() == 'Intern') {
-            employeeInfo = `School: ${workforce[i].internSchool}`;
+            employeeInfo = `School: ${workforce[i].school}`;
         }
         else if (workforce[i].getRole() == 'Engineer') {
-            employeeInfo = `Github: <a href="https://github.com/${workforce[i].engineerGithub}" target="_blank">${workforce[i].engineerGithub}</a>`;
+            employeeInfo = `Github: <a href="https://github.com/${workforce[i].github}" target="_blank">${workforce[i].github}</a>`;
         }
 
-        employeeCards += `<div class="card text-white bg-primary .col-6">
+        employeeCards += `<div class="card text-white bg-primary .col-6 w-25">
     <div class="card-body">
-        <h5 class="card-title name-section">${workforce[i].employeeName}</h5>
+        <h5 class="card-title name-section">${workforce[i].name}</h5>
         <p class"card-text">
         <span><img class='icon'></span>
         <span class="role-section">${workforce[i].getRole()}</span>
         </p>
         </div>
         <ul class="list-group">
-            <li class="list-group-item">ID: ${workforce[i].getId()}</li>
-            <li class="list-group-item">Email: <a href="mailto:${workforce[i].getEmail()}">${workforce[i].getEmail()}</a></li>
+            <li class="list-group-item">ID: ${workforce[i].id}</li>
+            <li class="list-group-item">Email: <a href="mailto:${workforce[i].email}">${workforce[i].email}</a></li>
             <li class="list-group-item">${employeeInfo}</li>
         </ul>    
     </div>`
