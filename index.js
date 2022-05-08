@@ -116,12 +116,14 @@ const addTeamMember = () => {
                 addTeamMember();
             }
             else {
-                createHTML();
+                let readyTeam = createCards();
+                createHTML(readyTeam);
             }
         })
 }
+// generate html file
 // function that creates HTML file
-function createHTML() {
+function createHTML(cards) {
     fs.writeFile('./dist/teamprofile.html',
         `
     <!DOCTYPE html>
@@ -135,15 +137,13 @@ function createHTML() {
     </head>
     <body>
         <header class=""main_header bg-red text-white>The Team</header>
-        <section class=""main_container"></section> 
+        <section class=""main_container">${cards}</section> 
     </body>
     </html>
     `,
         (err) => err ? console.error(err) : console.log('HTML has been created.'));
     console.log(workforce);
 }
-
-
 
 addManager();
 
@@ -180,8 +180,8 @@ function createCards() {
     }
     return employeeCards;
 }
-    // then in class creation
 
-// generate html file
+
+
 
 // call function to initiate application
