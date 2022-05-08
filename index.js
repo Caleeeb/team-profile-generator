@@ -138,8 +138,8 @@ function createHTML(cards) {
         <title>Team Profile</title>
     </head>
     <body>
-        <header class=""main_header bg-red text-white>The Team</header>
-        <section class=""main_container">${cards}</section> 
+        <header class="main-header bg-danger text-white text-center h-75 m-1 p-3"><h1>The Team</h1></header>
+        <section class="main-container d-flex justify-content-center">${cards}</section> 
     </body>
     </html>
     `,
@@ -164,7 +164,7 @@ function createCards() {
             employeeInfo = `Github: <a href="https://github.com/${workforce[i].github}" target="_blank">${workforce[i].github}</a>`;
         }
 
-        employeeCards += `<div class="card text-white bg-primary .col-6 w-25">
+        employeeCards += `<div class="shadow card text-white bg-primary .col-6 w-25 rounded m-1 p-3">
     <div class="card-body">
         <h5 class="card-title name-section">${workforce[i].name}</h5>
         <p class"card-text">
