@@ -45,7 +45,7 @@ const addManager = () => {
         // destructure responses
     ]).then(({ managerName, managerEmail, managerId, managerOfficeNumber, addEmployee } = response) => {
         // push specific to create manager class
-        workforce.push(new Manager(managerName, managerEmail, managerId, managerOfficeNumber));
+        workforce.push(new Manager(managerName, managerId, managerEmail, managerOfficeNumber));
         // engineer or intern prompts or finish application.
         // user selects to add a new team member
         if (addEmployee === true) {
@@ -65,7 +65,7 @@ const addTeamMember = () => {
             message: "What is the position this team member?",
             name: 'employeeRole',
             editableList: false,
-            choice: ['Engineer', 'Intern'],
+            choices: ['Engineer', 'Intern'],
         },
         {
             type: 'input',
@@ -87,13 +87,13 @@ const addTeamMember = () => {
             message: "What is this engineer's GitHub username?",
             name: 'engineerGitHub',
             // use 'when' so certain prompts are shown based on which employee role is chosen by user
-            when: answers => answers.employeeRole == 'Intern'
+            when: answers => answers.employeeRole == 'Engineer'
         },
         {
             type: 'input',
             message: "What school does this intern attend?",
             name: 'internSchool',
-            when: answers => answers.employeeRole == 'Engineer'
+            when: answers => answers.employeeRole == 'Intern'
         },
         {
             type: 'confirm',
@@ -139,9 +139,31 @@ function createHTML() {
     </body>
     </html>
     `,
-        (err) => err ? console.error(err) : console.log('A whoopsy has occurred'));
+        (err) => err ? console.error(err) : console.log('HTML has been created.'));
+    console.log(workforce);
 }
 
+
+
+addManager();
+
+// function the creates the html for the employee cards
+function createCards() {
+    let employeeCards = ``;
+    let employeeInfo = ``;
+
+    for (i = 0; i < workforce.length; i++) {
+        if (workforce[i].getRole() == 'Manager') {
+            employeeInfo = `Office number: ${workforce[i].managerOfficeNumber}`;
+        }
+        else if (workforce[i].getRole() == 'Intern') {
+            employeeInfo = `School: ${workforce[i].internSchool}`;
+        }
+        else if (workforce[i].getRole() == 'Engineer') {
+            employeeInfo = `Github: <a href="https://github.com/${workforce[i].engineerGithub}" target="_blank">${workforce[i].engineerGithub}</a>`;
+        }
+    }
+}
     // then in class creation
 
 // generate html file
