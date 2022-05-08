@@ -135,6 +135,7 @@ function createHTML(cards) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <title>Team Profile</title>
     </head>
     <body>
@@ -146,29 +147,32 @@ function createHTML(cards) {
         (err) => err ? console.error(err) : console.log('HTML has been created.'));
 }
 
-addManager();
-
 // function the creates the html for the employee cards
 function createCards() {
     let employeeCards = ``;
     let employeeInfo = ``;
+    let employeeIcon = ``;
 
     for (i = 0; i < workforce.length; i++) {
         if (workforce[i].getRole() == 'Manager') {
+            employeeIcon = `fas fa-brands fa-star fa-s`;
             employeeInfo = `Office number: ${workforce[i].officeNumber}`;
         }
-        else if (workforce[i].getRole() == 'Intern') {
-            employeeInfo = `School: ${workforce[i].school}`;
-        }
         else if (workforce[i].getRole() == 'Engineer') {
+            employeeIcon = `fas fa-solid fa-wrench fa-s`;
             employeeInfo = `Github: <a href="https://github.com/${workforce[i].github}" target="_blank">${workforce[i].github}</a>`;
         }
+        else if (workforce[i].getRole() == 'Intern') {
+            employeeIcon = `fas fa-solid fa-baby fa-s`;
+            employeeInfo = `School: ${workforce[i].school}`;
+        }
 
+        // employee card design, for some reason the shadows won't work
         employeeCards += `<div class="shadow card text-white bg-primary .col-6 w-25 rounded m-1 p-3">
     <div class="card-body">
         <h5 class="card-title name-section">${workforce[i].name}</h5>
         <p class"card-text">
-        <span><img class='icon'></span>
+        <span class="mb-1"><i class="${employeeIcon}"></i></span>
         <span class="role-section">${workforce[i].getRole()}</span>
         </p>
         </div>
@@ -182,7 +186,5 @@ function createCards() {
     return employeeCards;
 }
 
-
-
-
 // call function to initiate application
+addManager();
