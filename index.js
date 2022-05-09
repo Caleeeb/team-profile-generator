@@ -140,7 +140,7 @@ function createHTML(cards) {
     </head>
     <body>
         <header class="main-header bg-danger text-white text-center h-75 m-1 p-3"><h1>The Team</h1></header>
-        <section class="main-container d-flex justify-content-center">${cards}</section> 
+        <section class="main-container d-flex flex-wrap justify-content-center">${cards}</section> 
     </body>
     </html>
     `,
@@ -155,15 +155,15 @@ function createCards() {
 
     for (i = 0; i < workforce.length; i++) {
         if (workforce[i].getRole() == 'Manager') {
-            employeeIcon = `fas fa-brands fa-star fa-s`;
+            employeeIcon = `fas fa-brands fa-star`;
             employeeInfo = `Office number: ${workforce[i].officeNumber}`;
         }
         else if (workforce[i].getRole() == 'Engineer') {
-            employeeIcon = `fas fa-solid fa-wrench fa-s`;
+            employeeIcon = `fas fa-solid fa-wrench`;
             employeeInfo = `Github: <a href="https://github.com/${workforce[i].github}" target="_blank">${workforce[i].github}</a>`;
         }
         else if (workforce[i].getRole() == 'Intern') {
-            employeeIcon = `fas fa-solid fa-baby fa-s`;
+            employeeIcon = `fas fa-solid fa-baby`;
             employeeInfo = `School: ${workforce[i].school}`;
         }
 
