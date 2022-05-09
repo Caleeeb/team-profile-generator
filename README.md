@@ -28,9 +28,9 @@ https://drive.google.com/file/d/1R6z1mk-hClhk4VFI5W3X2t0Uq4yLqYLk/view
 
 Visuals:
 
-<img src="./assets/screenshots/node-team-profile-example.png" alt="Node Terminal Prompts" width="600">
+<img src="./assets/screenshots/node-team-profile-example.PNG" alt="Node Terminal Prompts" width="600">
 
-<img src="./assets/screenshots/team-profile-example.png" alt="Website Visual" width="600">
+<img src="./assets/screenshots/team-profile-example.PNG" alt="Website Visual" width="600">
 
 
 <p style='text-align: right;'><a href='#title'>Back to top</a></p>
